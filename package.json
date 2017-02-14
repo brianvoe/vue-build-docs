@@ -1,8 +1,13 @@
 {
   "name": "docs",
+  "version": "0.0.2",
   "license": "MIT",
   "dependencies": {
     "highlightjs": "^9.8.0",
+    "release-it": "^2.5.4",
     "vue-build": "^0.31.1"
+  },
+  "scripts": {
+    "prod": "yarn upgrade && vue-build prod && release-it"
   }
 }

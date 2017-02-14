@@ -1,0 +1,11 @@
+# Node folder/files
+node_modules
+npm-debug.log
+
+# Testing
+selenium-debug.log
+
+# Misc
+.imdone
+yarn-error.log
+.DS_Store

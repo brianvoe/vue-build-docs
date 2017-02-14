@@ -1,2 +1,2 @@
-# vue-build-docs
-Docs for vue-build
+# Vue Build Docs
+[Click here to view documentation website](http://vue-build.com)

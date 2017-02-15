@@ -15,7 +15,7 @@
     <p>If these features are all you need, then your project doesn't need a
     webpack configuration file at all.</p>
 
-    <h2>Overriding default Webpack settings</h2>
+    <h3>Overriding default Webpack settings</h3>
 
     <p>To customize your Webpack settings, <strong>create a <code>webpack.config.js</code>
     file in the root of your project</strong>. Whatever settings hash you export from

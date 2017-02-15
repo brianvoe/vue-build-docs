@@ -22,7 +22,6 @@
 
     <pre v-highlightjs><code class="bash">
     - .eslintrc
-    - .env - optional
     - package.json
     - webpack.config.js - optional see webpack wiki
     - src

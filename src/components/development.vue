@@ -29,7 +29,7 @@
       &lt;div id="app"&gt;&lt;/div&gt;
     </code>.</p>
 
-    <h2>Writing components</h2>
+    <h3>Writing components</h3>
 
     <p>vue-build includes <a href="http://vue-loader.vuejs.org/en/">vue-loader</a>,
     which allows you to load single-file components from <code>.vue</code> files.</p>
@@ -38,7 +38,7 @@
     <code>app.vue</code> file for an example. For more details on the
     <code>.vue</code> format, see <a href="http://vue-loader.vuejs.org/en/start/spec.html">the official spec</a>.</p>
 
-    <h2>Styling</h2>
+    <h3>Styling</h3>
 
     <p>vue-build includes support for CSS and SCSS, though you can add other
     styling languages by <router-link to="/webpack">overriding your webpack config</router-link>. To include a style in your project, just import it
@@ -64,7 +64,7 @@
     </strong> If you import full styles, they'll be duplicated in every
     component, bloating your build and slowing down development.</p>
 
-    <h2>Error overlay</h2>
+    <h3>Error overlay</h3>
     <p>
       During development if there are any linting, syntax errors or module import issues,
       they will be displayed as an overlay in the current running browser.

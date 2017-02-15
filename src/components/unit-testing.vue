@@ -6,7 +6,7 @@
       command. The testing suite uses karma, chai, and chai as promised. It also supports code coverage via istanbul.
     </p>
 
-    <h2>Writing tests</h2>
+    <h3>Writing tests</h3>
 
     <p>Every javascript file in the <code>[project root]/test/unit/specs</code> directory will
     execute in the browser when you run <code class="bash">vue-build unit</code>. Inside those files, you can write standard Mocha tests, e.g.</p>
@@ -31,7 +31,7 @@
     <a href="http://chaijs.com/" target="_blank">Chai docs</a>. For information on unit testing
     Vue applications specifically, try the <a href="https://vuejs.org/v2/guide/unit-testing.html" target="_blank">official docs</a>.</p>
 
-    <h2>Code coverage</h2>
+    <h3>Code coverage</h3>
     <p>If you run <code class="bash">vue-build unit</code> with the
     <code>--coverage</code> option, the tests will output a code coverage
     report to <code>[project root]/test/unit/coverage</code>, with both an
@@ -41,7 +41,7 @@
     vue-build unit --coverage
     </code></pre>
 
-    <h2>Running in continuous integration</h2>
+    <h3>Running in continuous integration</h3>
     <p>By default, unit tests run in "watch" mode, running repeatedly on every
     file change until you terminate the process. For continuous integration
     environments, use the <code>--single-run</code> option to run the tests only
@@ -57,7 +57,7 @@
         TESTS-Chrome_56.0.2924_(Mac_OS_X_10.10.5).xml
     </code></pre>
 
-    <h2>Running only some of your tests</h2>
+    <h3>Running only some of your tests</h3>
     <p>Mocha's <a href="https://mochajs.org/#exclusive-tests" target="_blank">.only()</a>
     feature is a good way to run a few tests in isolation (and you don't have
     to restart the test runner to do it!). If you need to exclude a test by
@@ -75,7 +75,7 @@
     For information about the pattern-matching syntax, see the <a href="http://karma-runner.github.io/1.0/config/files.html" target="_blank">Karma
     docs</a>.</p>
 
-    <h2>Determining what testing environment you're in</h2>
+    <h3>Determining what testing environment you're in</h3>
 
     <p>Hopefully you won't have to do this too often, but if you need to limit
     some behavior to <em>only</em> unit tests (or only e2e tests), you can access <code>process.env.TESTING_TYPE</code>

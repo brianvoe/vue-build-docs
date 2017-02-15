@@ -10,7 +10,7 @@
     npm install -g vue-build
     </code></pre>
 
-    <h2>Creating a new application</h2>
+    <h3>Creating a new application</h3>
     <p>
       Inside the folder that will contain your project, just type:
     </p>

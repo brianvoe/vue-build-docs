@@ -10,6 +10,7 @@
 
     <pre v-highlightjs><code class="bash">
     - .eslintrc
+    - env.js
     - package.json
     - src
       - app.js - main file
@@ -22,6 +23,7 @@
 
     <pre v-highlightjs><code class="bash">
     - .eslintrc
+    - env.js
     - package.json
     - webpack.config.js - optional see webpack wiki
     - src

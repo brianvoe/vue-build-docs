@@ -58,7 +58,7 @@
       API_HOSTNAME='http://my.api.com' THIRD_PARTY_API_KEY='production_key' vue-build prod
     </code></pre>
 
-    <p>These globals are set using webpack's DefinePlugin, which has a few
+    <p>This replacement is performed by using webpack's DefinePlugin, which has a few
     gotchas. If your environment variables don't work the way you expect them to,
     check out <a href="https://webpack.js.org/plugins/define-plugin/">documentation
     on the DefinePlugin</a>.</p>

@@ -31,6 +31,15 @@
     <a href="http://chaijs.com/" target="_blank">Chai docs</a>. For information on unit testing
     Vue applications specifically, try the <a href="https://vuejs.org/v2/guide/unit-testing.html" target="_blank">official docs</a>.</p>
 
+    <h3>File Watching</h3>
+    <p>
+      By default, unit tests run once. If you want to have your tests stay alive
+      and rerun after file changes just pass the <code>--watch</code> command.
+    </p>
+    <pre v-highlightjs><code class="javascript">
+    vue-build unit --watch
+    </code></pre>
+
     <h3>Code coverage</h3>
     <p>If you run <code class="bash">vue-build unit</code> with the
     <code>--coverage</code> option, the tests will output a code coverage
@@ -41,20 +50,13 @@
     vue-build unit --coverage
     </code></pre>
 
-    <h3>Running in continuous integration</h3>
-    <p>By default, unit tests run in "watch" mode, running repeatedly on every
-    file change until you terminate the process. For continuous integration
-    environments, use the <code>--single-run</code> option to run the tests only
-    one time. The process will exit with a success or failure code so
-    that your CI server knows if your tests passed.</p>
-
+    <h3>Error Reporting</h3>
     <p>If your CI server supports JUnit XML reports, you can use the
     <code>--junit</code> option to output XML reports to
     <code>[project root]/test/unit/reports</code>. One file will be generated
-    for each browser/version/OS that's used to run your tests, e.g.</p>
-
+    for each browser/version/OS that's used to run your tests.</p>
     <pre v-highlightjs><code class="bash">
-        TESTS-Chrome_56.0.2924_(Mac_OS_X_10.10.5).xml
+    vue-build --junit
     </code></pre>
 
     <h3>Running only some of your tests</h3>
@@ -63,7 +65,6 @@
     to restart the test runner to do it!). If you need to exclude a test by
     leaving it out of the build entirely, though, you can do that with
     the <code>--files</code> option:</p>
-
     <pre v-highlightjs><code class="bash">
     vue-build unit --files="**/*.js"
     vue-build unit --files="**/!(jquery).js"

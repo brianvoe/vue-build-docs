@@ -67,8 +67,8 @@
         <div>Hot Reloading</div>
         <div>Hot Middleware</div>
         <div>Error Overlay</div>
-        <div>.env Processing</div>
         <div>Css Extraction</div>
+        <div>Env. Var Injection</div>
       </div>
 
       <div class="column">

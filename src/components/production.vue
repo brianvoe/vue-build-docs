@@ -9,5 +9,4 @@
     <pre v-highlightjs><code class="bash">
     vue-build prod
     </code></pre>
-  </div>
 </template>

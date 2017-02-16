@@ -47,6 +47,8 @@
       Functional out-of-the-box, but easy to customize.
     </p>
 
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/Cdr1ClG5Nh8" frameborder="0" allowfullscreen></iframe>
+
     <h3>Features</h3>
     <div class="features-list">
 

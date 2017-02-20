@@ -23,7 +23,6 @@ body {
   max-width: 900px;
   height: 100%;
   margin: 0 auto;
-  overflow: hidden;
 
   // Header - located at the top of the aplication
   .header {
@@ -108,9 +107,9 @@ body {
       flex-shrink: 1;
       flex-basis: calc(100% - #{$sidebar-width});
       min-height: 0; /* weird browser fix */
-      overflow-x: hidden;
-      overflow-y: auto;
       padding: 0 15px 15px 15px;
+      overflow: auto;
     }
+
   }
 }

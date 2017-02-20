@@ -4,7 +4,6 @@ import router from './router.js'
 import hljs from 'highlightjs'
 
 import './assets/css/app.scss'
-
 import './google-analytics'
 
 Vue.directive('highlightjs', {

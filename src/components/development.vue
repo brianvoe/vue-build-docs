@@ -1,9 +1,18 @@
 <script>
-  export default {
+  import baguetteBox from 'baguettebox.js'
+  import errorOverlayPic from 'images/screenshots/error_screen.jpg'
 
+  export default {
+    data () {
+      return {
+        errorOverlayPic
+      }
+    },
+    mounted () {
+      baguetteBox.run('.gallery')
+    }
   }
 </script>
-
 <template>
   <div>
     <h1>Running Your App</h1>
@@ -25,7 +34,7 @@
     your application runs in the browser, the <strong>contents of this file are the
     first thing to run</strong>. In the default project template, <code>src/app.js</code>
     sets up a Vue app for you, and "mounts" it in the page inside of
-    <code class="html" v->
+    <code class="html">
       &lt;div id="app"&gt;&lt;/div&gt;
     </code>.</p>
 
@@ -69,6 +78,11 @@
       During development if there are any linting, syntax errors or module import issues,
       they will be displayed as an overlay in the current running browser.
     </p>
-    <img width="100%" src="../assets/images/screenshots/error_screen.jpg" />
+
+    <div class="gallery">
+      <a :href="errorOverlayPic" data-caption="Error Overlay">
+        <img width="100px" :src="errorOverlayPic" />
+      </a>
+    </div>
   </div>
 </template>

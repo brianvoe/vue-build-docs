@@ -1,7 +1,8 @@
 var projectRoot = process.cwd()
+var env = process.env.ENVIRONMENT
 
 var config = {
-  output: { publicPath: '/dist/' },
+  output: { publicPath: (env === 'development' ? '/' : '/dist/') },
   resolve: {
     // Aliases - Used for pointing to reusable parts of your app
     alias: {

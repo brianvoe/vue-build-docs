@@ -12,6 +12,7 @@ import unit from './components/unit-testing.vue'
 import e2e from './components/e2e-testing.vue'
 import env from './components/env.vue'
 import webpack from './components/webpack.vue'
+import library from './components/library.vue'
 import structure from './components/structure.vue'
 
 export default new VueRouter({
@@ -27,6 +28,7 @@ export default new VueRouter({
     { path: '/e2e-testing', component: e2e },
     { path: '/env', component: env },
     { path: '/webpack', component: webpack },
+    { path: '/library', component: library },
     { path: '/structure', component: structure }
   ]
 })

@@ -1,9 +1,9 @@
 import Vue from 'vue'
-import app from 'src/app.vue'
+import index from 'src/index.vue'
 import router from './router.js'
 import hljs from 'highlightjs'
 
-import './assets/css/app.scss'
+import './assets/css/index.scss'
 import './google-analytics'
 
 Vue.directive('highlightjs', {
@@ -36,5 +36,5 @@ Vue.directive('highlightjs', {
 new Vue({
   router,
   el: '#app',
-  render: (h) => h(app)
+  render: (h) => h(index)
 })

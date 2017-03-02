@@ -1,5 +1,5 @@
 <style lang="scss">
-  @import "~src/assets/css/variables.scss";
+  @import "~src/assets/css/_variables.scss";
 
   .home-page {
     .first-script {

@@ -13,7 +13,7 @@
 </script>
 
 <style lang="scss">
-  @import "~src/assets/css/variables.scss";
+  @import "~src/assets/css/_variables.scss";
 
   .sidebar {
     .third-party {
@@ -49,6 +49,7 @@
       <router-link to="/unit-testing">Unit Testing</router-link>
       <router-link to="/e2e-testing">E2E Testing</router-link>
       <router-link to="/env">Environment Config</router-link>
+      <router-link to="/library">Creating a Library</router-link>
       <router-link to="/webpack">Webpack</router-link>
       <router-link to="/structure">Structure</router-link>
     </div>

@@ -26,7 +26,7 @@
     <p>So if you wanted to add LESS support, for instance, your <code>webpack.config.js</code>
     might look like this:</p>
 
-    <pre v-highlightjs><code class="js">
+    <pre v-highlightjs><code class="javascript">
       module.exports = {
         loaders: [
           {

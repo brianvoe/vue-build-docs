@@ -9,3 +9,4 @@ selenium-debug.log
 .imdone
 yarn-error.log
 .DS_Store
+bundle-analyzer-report.html

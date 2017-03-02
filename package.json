@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "license": "MIT",
   "dependencies": {
+    "baguettebox.js": "^1.8.1",
     "highlightjs": "^9.8.0",
-    "vue-build": "^0.31.1"
+    "vue-build": "^0.40.0",
+    "webpack-bundle-analyzer": "^2.3.0"
   }
 }

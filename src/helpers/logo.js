@@ -1,5 +1,6 @@
 import 'pixi.js'
-/* globals PIXI */
+import 'tween.js'
+/* globals PIXI,TWEEN */
 
 // Create class - needed something that was effected by vue
 export default class VueBuildLogo {
@@ -27,15 +28,25 @@ export default class VueBuildLogo {
 
     all.addChild(v)
 
-    // Center bunny sprite in local container coordinates
+    // Set pivot location
     all.pivot.x = all.width / 2
-    all.pivot.y = all.height / 2
+    all.pivot.y = 0
+
+    // Scale to size - must be dont after settin pivot
+    all.scale.set(0.4)
+
+    all.x = app.screen.width / 2
+    all.y = app.screen.height / 2
+
+    setInterval(() => {
+      this.animateVLock(v)
+    }, 2000)
 
     // Listen for animate update
     app.ticker.add(function (delta) {
       // rotate the container!
       // use delta to create frame-independent tranform
-      all.rotation += 0.05 * delta
+      all.rotation += 0.01 * delta
     })
   }
 
@@ -69,6 +80,10 @@ export default class VueBuildLogo {
     v.endFill()
 
     return v
+  }
+
+  animateVLock (v) {
+
   }
 
   render () {

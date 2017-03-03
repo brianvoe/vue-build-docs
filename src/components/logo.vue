@@ -14,8 +14,6 @@
 
 <template>
   <div class="logo">
-    <!-- <canvas id="canvasLogo" :height="height" :width="width" style="border: solid 1px #cccccc;"></canvas>ue-build -->
-    <div id="canvasLogo" :height="height" :width="width" style="border: solid 1px #cccccc;"></div>
-
+    <div id="canvasLogo" style="border: solid 1px #cccccc;"></div>
   </div>
 </template>

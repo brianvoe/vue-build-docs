@@ -14,6 +14,6 @@
 
 <template>
   <div class="logo">
-    <div id="canvasLogo" style="border: solid 1px #cccccc;"></div>
+    <div id="canvasLogo" style="border: solid 1px #cccccc; margin: 0 auto;"></div>
   </div>
 </template>

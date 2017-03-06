@@ -143,7 +143,7 @@ export default class VueBuildLogo {
     return new Promise((resolve, reject) => {
       // Rotate top left
       TweenMax.to(this.all, timing, {
-        rotation: 2880 * PIXI.DEG_TO_RAD,
+        rotation: 360 * PIXI.DEG_TO_RAD,
         ease: Power3.easeInOut,
         onComplete: () => {
           TweenMax.to(this.all, 0, {rotation: 0})

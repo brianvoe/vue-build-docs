@@ -4,11 +4,15 @@ import { TweenMax, Power3, RoughEase, Linear } from 'gsap'
 
 // Create class - needed something that was effected by vue
 export default class VueBuildLogo {
-  constructor (height, width) {
-    this.height = height
-    this.width = width
+  constructor () {
+    this.height = window.innerHeight
+    this.width = window.innerWidth
+    window.onresize = (event) => {
+      this.height = window.innerHeight
+      this.width = window.innerWidth
+    }
     this.canvas = document.getElementById('canvasLogo')
-    this.app = new PIXI.Application(height, width, {
+    this.app = new PIXI.Application(this.height, this.width, {
       antialias: true,
       backgroundColor: 0xffffff
     })

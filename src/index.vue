@@ -28,8 +28,8 @@
 
 <template>
   <div class="app">
+    <logo />
     <div class="header" :class="{'large': isHome}">
-      <logo :height="500" :width="500" />
       <div class="tagline">Taking the frustrating build process and clutter out of your application</div>
     </div>
     <div class="container">

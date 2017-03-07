@@ -1,15 +1,10 @@
 <script>
   import nav from './components/nav.vue'
-  import logo from './components/logo.vue'
+  import intro from './components/intro.vue'
 
   export default {
-    data: function () {
-      return {
-        logo
-      }
-    },
     components: {
-      logo,
+      intro,
       navBar: nav
     },
     mounted () {
@@ -28,7 +23,7 @@
 
 <template>
   <div class="app">
-    <logo />
+    <intro />
     <div class="header" :class="{'large': isHome}">
       <div class="tagline">Taking the frustrating build process and clutter out of your application</div>
     </div>

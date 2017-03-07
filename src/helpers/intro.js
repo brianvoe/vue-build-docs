@@ -3,21 +3,22 @@ import { TweenMax, Power3, RoughEase, Linear } from 'gsap'
 /* globals PIXI */
 
 // Create class - needed something that was effected by vue
-export default class VueBuildLogo {
+export default class VueBuildIntro {
   constructor () {
     this.height = window.innerHeight
     this.width = window.innerWidth
-    window.onresize = (event) => {
-      this.height = window.innerHeight
-      this.width = window.innerWidth
-    }
-    this.canvas = document.getElementById('canvasLogo')
+    this.canvas = document.getElementById('canvasIntro')
     this.app = new PIXI.Application(this.height, this.width, {
       antialias: true,
-      backgroundColor: 0xffffff
+      backgroundColor: 0xffffff,
+      transparent: false,
+      resolution: window.devicePixelRatio,
+      autoResize: true
     })
+    window.addEventListener('resize', this.resize())
     this.canvas.appendChild(this.app.view)
     this.all = new PIXI.Container() // Container for all v's
+    this.minis = []
 
     // Make a container to hold all v's
     this.app.stage.addChild(this.all) // Add to state
@@ -30,14 +31,21 @@ export default class VueBuildLogo {
     // Center and scale
     this.allCenter()
 
+    // Animate minis
+    this.animateMinis()
+
     // Animate
-    this.spreadOut(2)
+    this.spreadOut(0.5, 1)
     .then(() => {
       this.animate()
-      setInterval(() => {
-        this.animate()
-      }, 3000)
     })
+  }
+
+  // When window resizes resize renderer
+  resize () {
+    this.width = window.innerWidth
+    this.height = window.innerHeight
+    this.app.renderer.resize(this.width, this.height)
   }
 
   allCenter () {
@@ -61,11 +69,15 @@ export default class VueBuildLogo {
     v.addChild(vTop)
     v.addChild(vBottom)
 
-    // Set pivot
-    v.pivot.x = v.width / 2
-    v.pivot.y = -115
-    v.x += this.width / 2
-    v.y += this.height / 2
+    // Set pivot and position
+    v.pivot.x = info.pivotX ? info.pivotX : v.width / 2
+    v.pivot.y = info.pivotY ? info.pivotY : -115
+    v.x += info.x ? info.x : this.width / 2
+    v.y += info.y ? info.y : this.height / 2
+
+    if (info.scale) {
+      v.scale.set(info.scale)
+    }
 
     return v
   }
@@ -104,6 +116,29 @@ export default class VueBuildLogo {
     return v
   }
 
+  animateMinis () {
+    // Load a bunch of mini v's
+    for (var iMini = 0; iMini < 100; iMini++) {
+      let vMini = this.v({
+        scale: 0.3,
+        x: this.getRandomNum(-600, this.width + 600),
+        y: -200
+      })
+      this.app.stage.addChild(vMini)
+      TweenMax.to(vMini, 0.6, {
+        delay: this.getRandomNum(0, 2),
+        ease: Power3.easeIn,
+        x: this.width / 2,
+        y: this.height / 2,
+        height: 0,
+        width: 0,
+        onComplete () {
+          vMini.destroy()
+        }
+      })
+    }
+  }
+
   // Animate is responsible for calling animations in order and timing
   animate () {
     this.spin(1)
@@ -125,16 +160,16 @@ export default class VueBuildLogo {
     return new Promise((resolve, reject) => {
       // Rotate top left
       TweenMax.to(this.all.children[1], timing, {
-        delay: 0.5,
+        delay: delay,
         rotation: 120 * PIXI.DEG_TO_RAD,
-        ease: Power3.easeInOut
+        ease: Power3.easeIn
       })
 
       // Rotate top right
       TweenMax.to(this.all.children[2], timing, {
-        delay: 0.5,
+        delay: delay * 1.5,
         rotation: 240 * PIXI.DEG_TO_RAD,
-        ease: Power3.easeInOut,
+        ease: Power3.easeIn,
         onComplete: function () {
           resolve()
         }
@@ -233,5 +268,9 @@ export default class VueBuildLogo {
 
     // Make sure you are back to center again
     TweenMax.to(this.all, 0, {delay: timing, x: this.width / 2, y: this.height / 2})
+  }
+
+  getRandomNum (min, max) {
+    return Math.random() * (max - min) + min
   }
 }

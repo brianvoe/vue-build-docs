@@ -18,7 +18,6 @@ export default class VueBuildIntro {
     window.addEventListener('resize', this.resize())
     this.canvas.appendChild(this.app.view)
     this.all = new PIXI.Container() // Container for all v's
-    this.minis = []
 
     // Make a container to hold all v's
     this.app.stage.addChild(this.all) // Add to state
@@ -228,8 +227,8 @@ export default class VueBuildIntro {
     return new Promise((resolve, reject) => {
       // Open v and slam sh
       TweenMax.to(this.all.scale, timing, {
-        x: 0.45,
-        y: 0.45,
+        x: 2,
+        y: 2,
         // this.all.scale.set(0.4),
         ease: Power3.easeIn,
         onComplete: function () {
@@ -243,8 +242,8 @@ export default class VueBuildIntro {
     return new Promise((resolve, reject) => {
       // Open v and slam sh
       TweenMax.to(this.all.scale, timing, {
-        x: 0.3,
-        y: 0.3,
+        x: 0.5,
+        y: 0.5,
         // this.all.scale.set(0.4),
         ease: Power3.easeIn,
         onComplete: function () {

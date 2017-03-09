@@ -9,6 +9,7 @@ export default class VueBuildIntro {
     this.width = window.innerWidth
     this.primaryColor = parseInt('41B883', 16) // #41B883
     this.secondaryColor = parseInt('35495E', 16) // #35495E
+    this.whiteColor = parseInt('ffffff', 16) // #ffffff
     this.canvas = document.getElementById('canvasIntro')
     this.app = new PIXI.Application(this.height, this.width, {
       antialias: true,
@@ -119,6 +120,22 @@ export default class VueBuildIntro {
     return v
   }
 
+  zoomLine (color = this.primaryColor) {
+    // Create trailing zoom left
+    var rect = new PIXI.Graphics()
+    rect.beginFill(color, 1)
+    rect.drawRect(0, 0, 1, 2)
+    rect.endFill()
+    this.app.stage.addChildAt(rect, this.app.stage.length - 1)
+
+    rect.pivot.x = rect.width / 2
+    rect.pivot.y = 0
+    rect.x = this.width / 2
+    rect.y = 0
+
+    return rect
+  }
+
   // Animate is responsible for calling animations in order and timing
   animate () {
     // Zoom v in
@@ -130,13 +147,13 @@ export default class VueBuildIntro {
       return this.spreadOut(0.5, 1)
     })
     .then(() => {
-      this.spin(1)
-      this.scaleOutAll(0.7)
+      this.spin(1.3)
+      this.scaleOutAll(1)
       .then(() => {
         return this.scaleInAll(0.3)
       })
 
-      return this.openV(0.7)
+      return this.openV(1)
       .then(() => {
         return this.closeV(0.3)
         .then(() => {
@@ -145,10 +162,13 @@ export default class VueBuildIntro {
         })
       })
     })
+    .then(() => {
+      this.slideAllUp()
+    })
   }
 
   // Take all container and zoom into positionY
-  // Also create
+  // Also create zoom line for spread animation
   zoomIn (timing = 0.75) {
     return new Promise((resolve, reject) => {
       TweenMax.fromTo(this.all, timing,
@@ -160,37 +180,24 @@ export default class VueBuildIntro {
           }
         })
 
-      // Create trailing zoom
-      var rect = new PIXI.Graphics()
-      rect.beginFill(this.primaryColor, 1)
-      rect.drawRect(0, 0, 1, 2)
-      rect.endFill()
-      this.app.stage.addChild(rect)
+      // Create trailing zoom left
+      var rectWhite = this.zoomLine(this.whiteColor)
+      var rectGreen = this.zoomLine()
 
-      rect.pivot.x = rect.width / 2
-      rect.pivot.y = 0
-      rect.x = this.width / 2
-      rect.y = 0
+      TweenMax.to(rectGreen, timing, {height: this.height, ease: Power4.easeOut, onComplete: () => { this.lineSpread(rectGreen) }})
+      TweenMax.to(rectWhite, timing / 2, {delay: 0.5, height: this.height, ease: Power4.easeOut, onComplete: () => { this.lineSpread(rectWhite) }})
+    })
+  }
 
-      TweenMax.to(rect, timing,
-        {
-          delay: 0.1,
-          height: this.height,
-          ease: Power4.easeOut,
-          onComplete: () => {
-            TweenMax.to(rect, 0.3, {
-              alpha: 0,
-              width: this.width,
-              ease: Power4.easeIn,
-              onComplete: () => {
-                setTimeout(() => {
-                  rect.destroy()
-                }, 1000)
-              }
-            })
-          }
-        }
-      )
+  lineSpread (rect) {
+    TweenMax.to(rect, 0.3, {
+      width: this.width,
+      ease: Power4.easeIn,
+      onComplete: () => {
+        setTimeout(() => {
+          rect.destroy()
+        }, 1000)
+      }
     })
   }
 
@@ -250,14 +257,15 @@ export default class VueBuildIntro {
         alpha: 0.1,
         x: toX,
         y: toY,
+        rotation: this.getRandomNum(0, 360) * PIXI.DEG_TO_RAD,
         onComplete: () => {
-          // vMini.destroy()
-          TweenMax.to(vMini, 1, {
+          TweenMax.to(vMini, 30, {
             alpha: 0,
             x: this.getRandomNum(toX - 150, toX + 150),
-            y: this.height,
+            y: this.getRandomNum(toY - 150, toY + 150),
+            rotation: this.getRandomNum(0, 360) * PIXI.DEG_TO_RAD,
             onComplete: () => {
-
+              vMini.destroy()
             }
           })
         }
@@ -381,6 +389,16 @@ export default class VueBuildIntro {
 
     // Make sure you are back to center again
     TweenMax.to(this.all, 0, {delay: timing, x: this.all.positionX, y: this.all.positionY})
+  }
+
+  slideAllUp (timing = 2, delay = 0.5) {
+    return new Promise((resolve, reject) => {
+      TweenMax.to(this.all, timing, {
+        delay: delay,
+        y: 200,
+        ease: Power3.easeInOut
+      })
+    })
   }
 
   getRandomNum (min, max) {

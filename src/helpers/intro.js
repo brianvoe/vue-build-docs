@@ -4,7 +4,9 @@ import { TweenMax, Power3, Power4, RoughEase, Linear } from 'gsap'
 
 // Create class - needed something that was effected by vue
 export default class VueBuildIntro {
-  constructor () {
+  constructor (callback) {
+    this.callback = callback
+    // console.log(callback('hit'))
     this.height = window.innerHeight
     this.width = window.innerWidth
     this.primaryColor = parseInt('41B883', 16) // #41B883
@@ -25,6 +27,8 @@ export default class VueBuildIntro {
     this.all.positionY = this.height / 2
     this.all.positionYStart = -200
     this.all.positionYEnd = 200
+    this.slogan = this.slogan()
+    this.gettingStarted = this.getStarted()
 
     // Make a container to hold all v's
     this.app.stage.addChild(this.all) // Add to state
@@ -136,6 +140,67 @@ export default class VueBuildIntro {
     return rect
   }
 
+  slogan () {
+    var style = new PIXI.TextStyle({
+      fontFamily: 'Helvetica',
+      fontSize: 50,
+      fontWeight: 'bold',
+      fill: this.primaryColor
+    })
+
+    var text = new PIXI.Text('Ultra Super Simple Cli', style)
+    text.pivot.x = text.width / 2
+    text.pivot.y = text.height
+    text.x = this.width / 2
+    text.y = this.height + 100
+
+    this.app.stage.addChildAt(text, this.app.stage.length - 1)
+
+    return text
+  }
+
+  getStarted () {
+    var box = new PIXI.Container()
+    var style = new PIXI.TextStyle({
+      fontFamily: 'Helvetica',
+      fontSize: 35,
+      fontWeight: 'bold',
+      fill: this.primaryColor
+    })
+
+    var text = new PIXI.Text('Getting Started', style)
+    text.pivot.x = text.width / 2
+    text.pivot.y = text.height
+    text.x = this.width / 2
+    text.y = this.height / 2
+
+    var rect = new PIXI.Graphics()
+    rect.beginFill(this.secondaryColor, 1)
+    rect.drawRect(0, 0, 300, 75)
+    rect.endFill()
+    rect.pivot.x = rect.width / 2
+    rect.pivot.y = rect.height
+    rect.x = this.width / 2
+    rect.y = this.height / 2
+
+    box.on('pointerdown', () => {
+      console.log('yep')
+      this.callback('getting-started')
+    })
+
+    // Set box
+    box.addChild(rect)
+    box.addChild(text)
+    box.pivot.x = box.width / 2
+    box.pivot.y = box.height
+    box.x = this.width / 2
+    box.y = this.height / 2
+
+    this.app.stage.addChildAt(box, this.app.stage.length - 1)
+
+    return box
+  }
+
   // Animate is responsible for calling animations in order and timing
   animate () {
     // Zoom v in
@@ -164,6 +229,8 @@ export default class VueBuildIntro {
     })
     .then(() => {
       this.slideAllUp()
+      this.slideSloganUp()
+      this.slideGettingStartedUp()
     })
   }
 
@@ -396,7 +463,36 @@ export default class VueBuildIntro {
       TweenMax.to(this.all, timing, {
         delay: delay,
         y: 200,
-        ease: Power3.easeInOut
+        ease: Power3.easeInOut,
+        onComplete: () => {
+          resolve()
+        }
+      })
+    })
+  }
+
+  slideSloganUp (timing = 2, delay = 0.5) {
+    return new Promise((resolve, reject) => {
+      TweenMax.to(this.slogan, timing, {
+        delay: delay,
+        y: 500,
+        ease: Power3.easeInOut,
+        onComplete: () => {
+          resolve()
+        }
+      })
+    })
+  }
+
+  slideGettingStartedUp (timing = 2, delay = 0.5) {
+    return new Promise((resolve, reject) => {
+      TweenMax.to(this.gettingStarted, timing, {
+        delay: delay,
+        y: 600,
+        ease: Power3.easeInOut,
+        onComplete: () => {
+          resolve()
+        }
       })
     })
   }

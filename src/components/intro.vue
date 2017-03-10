@@ -1,12 +1,18 @@
 <script>
-  import Vue from 'vue'
   import VueBuildIntro from '../helpers/intro.js'
   export default {
     mounted () {
-      Vue.nextTick(function () {
-        /* eslint-disable no-new */
-        new VueBuildIntro()
-      })
+      /* eslint-disable no-new */
+      new VueBuildIntro(this.introCallback)
+    },
+    methods: {
+      introCallback (action) {
+        console.log(action)
+        if (action === 'getting-started') { this.gettingStarted() }
+      },
+      gettingStarted () {
+        alert('hello')
+      }
     }
   }
 </script>
@@ -31,6 +37,6 @@
 
 <template>
   <div class="intro">
-    <div id="canvasIntro" style="border: solid 1px #cccccc;"></div>
+    <div id="canvasIntro"></div>
   </div>
 </template>

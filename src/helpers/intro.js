@@ -6,7 +6,6 @@ import { TweenMax, Power3, Power4, RoughEase, Linear } from 'gsap'
 export default class VueBuildIntro {
   constructor (callback) {
     this.callback = callback
-    // console.log(callback('hit'))
     this.height = window.innerHeight
     this.width = window.innerWidth
     this.primaryColor = parseInt('41B883', 16) // #41B883
@@ -145,10 +144,13 @@ export default class VueBuildIntro {
       fontFamily: 'Helvetica',
       fontSize: 50,
       fontWeight: 'bold',
-      fill: this.primaryColor
+      fill: this.primaryColor,
+      dropShadow: true,
+      dropShadowAlpha: 0.08,
+      dropShadowBlur: 50
     })
 
-    var text = new PIXI.Text('Ultra Super Simple Cli', style)
+    var text = new PIXI.Text('Super Simple Cli', style)
     text.pivot.x = text.width / 2
     text.pivot.y = text.height
     text.x = this.width / 2
@@ -183,8 +185,8 @@ export default class VueBuildIntro {
     rect.x = this.width / 2
     rect.y = this.height / 2
 
-    box.on('pointerdown', () => {
-      console.log('yep')
+    box.interactive = true
+    box.on('click', () => {
       this.callback('getting-started')
     })
 
@@ -475,7 +477,7 @@ export default class VueBuildIntro {
     return new Promise((resolve, reject) => {
       TweenMax.to(this.slogan, timing, {
         delay: delay,
-        y: 500,
+        y: 525,
         ease: Power3.easeInOut,
         onComplete: () => {
           resolve()

@@ -1,4 +1,5 @@
 <script>
+  /* globals TweenMax, Power3 */
   import VueBuildIntro from '../helpers/intro.js'
   export default {
     mounted () {
@@ -7,11 +8,16 @@
     },
     methods: {
       introCallback (action) {
-        console.log(action)
         if (action === 'getting-started') { this.gettingStarted() }
       },
       gettingStarted () {
-        alert('hello')
+        TweenMax.to(document.getElementById('intro'), 1, {
+          top: -window.innerHeight,
+          ease: Power3.easeInOut,
+          onComplete: () => {
+            // document.getElementById('intro').style.display = 'none'
+          }
+        })
       }
     }
   }
@@ -20,11 +26,10 @@
 <style lang="scss">
   @import "~src/assets/css/_variables.scss";
 
-  .intro {
+  #intro {
     position: fixed;
     top: 0;
     right: 0;
-    bottom: 0;
     left: 0;
     background-color: $white;
 
@@ -36,7 +41,7 @@
 </style>
 
 <template>
-  <div class="intro">
+  <div id="intro">
     <div id="canvasIntro"></div>
   </div>
 </template>

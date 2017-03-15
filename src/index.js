@@ -5,11 +5,11 @@ import router from './router.js'
 // we use a custom build of highlightjs to cut down on size
 // (and custom builds apparently only export themselves as globals? when I tried
 // import hljs from 'path' the ENTIRE APP disappeared with no error messages. so.)
-import 'src/../vendor/highlight/highlight.pack.js'
-/* global hljs */
-
+import 'src/vendor/highlight/highlight.pack.js'
 import './assets/css/index.scss'
 import './google-analytics'
+
+/* global hljs */
 
 Vue.directive('highlightjs', {
   deep: true,

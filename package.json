@@ -7,6 +7,6 @@
     "gsap": "^1.19.1",
     "highlightjs": "^9.8.0",
     "pixi.js": "^4.4.1",
-    "vue-build": "^0.40.0"
+    "vue-build": "^0.43.0"
   }
 }

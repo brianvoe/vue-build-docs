@@ -9,13 +9,25 @@
     methods: {
       introCallback (action) {
         if (action === 'getting-started') { this.gettingStarted() }
+        if (action === 'features') { this.features() }
       },
       gettingStarted () {
+        this.$router.push('getting-started')
         TweenMax.to(document.getElementById('intro'), 1, {
           top: -window.innerHeight,
           ease: Power3.easeInOut,
           onComplete: () => {
-            // document.getElementById('intro').style.display = 'none'
+            document.getElementById('intro').style.display = 'none'
+          }
+        })
+      },
+      features () {
+        this.$router.push('/')
+        TweenMax.to(document.getElementById('intro'), 1, {
+          top: -window.innerHeight,
+          ease: Power3.easeInOut,
+          onComplete: () => {
+            document.getElementById('intro').style.display = 'none'
           }
         })
       }
@@ -36,6 +48,7 @@
     #canvasIntro {
       height: 100%;
       width: 100%;
+      background-color: $white;
     }
   }
 </style>

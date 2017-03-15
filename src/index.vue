@@ -1,11 +1,17 @@
 <script>
   import nav from './components/nav.vue'
   import intro from './components/intro.vue'
+  import logo from 'images/logo.png'
 
   export default {
     components: {
       intro,
       navBar: nav
+    },
+    data () {
+      return {
+        logo: logo
+      }
     },
     mounted () {
       // Lets redirect to path
@@ -25,6 +31,7 @@
   <div class="app">
     <intro />
     <div class="header" :class="{'large': isHome}">
+      <div class="logo"><img :src="logo" />ue Build</div>
       <div class="tagline">Taking the frustrating build process and clutter out of your application</div>
     </div>
     <div class="container">

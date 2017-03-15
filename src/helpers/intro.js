@@ -27,7 +27,12 @@ export default class VueBuildIntro {
     this.all.positionYStart = -200
     this.all.positionYEnd = 200
     this.slogan = this.slogan()
-    this.gettingStarted = this.getStarted()
+    this.gettingStarted = this.linkText('Getting Started', 'getting-started')
+    this.gettingStarted.x = (this.width / 2) - 100
+    this.gettingStarted.y = (this.height) - 75
+    this.features = this.linkText('Features', 'features')
+    this.features.x = (this.width / 2) + 100
+    this.features.y = (this.height) - 75
 
     // Make a container to hold all v's
     this.app.stage.addChild(this.all) // Add to state
@@ -150,7 +155,7 @@ export default class VueBuildIntro {
       dropShadowBlur: 50
     })
 
-    var text = new PIXI.Text('Super Simple Cli', style)
+    var text = new PIXI.Text('Ultra Simple Cli', style)
     text.pivot.x = text.width / 2
     text.pivot.y = text.height
     text.x = this.width / 2
@@ -161,40 +166,41 @@ export default class VueBuildIntro {
     return text
   }
 
-  getStarted () {
+  linkText (textStr, link) {
     var box = new PIXI.Container()
     var style = new PIXI.TextStyle({
       fontFamily: 'Helvetica',
-      fontSize: 35,
+      fontSize: 28,
       fontWeight: 'bold',
-      fill: this.primaryColor
+      fill: this.secondaryColor
     })
 
-    var text = new PIXI.Text('Getting Started', style)
+    var text = new PIXI.Text(textStr, style)
     text.pivot.x = text.width / 2
     text.pivot.y = text.height
     text.x = this.width / 2
     text.y = this.height / 2
 
-    var rect = new PIXI.Graphics()
-    rect.beginFill(this.secondaryColor, 1)
-    rect.drawRect(0, 0, 300, 75)
-    rect.endFill()
-    rect.pivot.x = rect.width / 2
-    rect.pivot.y = rect.height
-    rect.x = this.width / 2
-    rect.y = this.height / 2
+    var arrow = new PIXI.Graphics()
+    arrow.lineStyle(4, this.secondaryColor, 1)
+    arrow.moveTo(0, 0)
+    arrow.lineTo(50, 25)
+    arrow.lineTo(100, 0)
+    arrow.pivot.x = arrow.width / 2
+    arrow.pivot.y = arrow.height
+    arrow.x = this.width / 2
+    arrow.y = (this.height / 2) + 40
 
     box.interactive = true
     box.on('click', () => {
-      this.callback('getting-started')
+      this.callback(link)
     })
 
     // Set box
-    box.addChild(rect)
+    box.addChild(arrow)
     box.addChild(text)
-    box.pivot.x = box.width / 2
-    box.pivot.y = box.height
+    box.pivot.x = this.width / 2
+    box.pivot.y = this.height / 2
     box.x = this.width / 2
     box.y = this.height / 2
 
@@ -232,7 +238,6 @@ export default class VueBuildIntro {
     .then(() => {
       this.slideAllUp()
       this.slideSloganUp()
-      this.slideGettingStartedUp()
     })
   }
 
@@ -478,19 +483,6 @@ export default class VueBuildIntro {
       TweenMax.to(this.slogan, timing, {
         delay: delay,
         y: 525,
-        ease: Power3.easeInOut,
-        onComplete: () => {
-          resolve()
-        }
-      })
-    })
-  }
-
-  slideGettingStartedUp (timing = 2, delay = 0.5) {
-    return new Promise((resolve, reject) => {
-      TweenMax.to(this.gettingStarted, timing, {
-        delay: delay,
-        y: 600,
         ease: Power3.easeInOut,
         onComplete: () => {
           resolve()

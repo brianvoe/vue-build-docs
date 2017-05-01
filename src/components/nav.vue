@@ -44,12 +44,12 @@
     <div class="links">
       <router-link to="/" exact>Home</router-link>
       <router-link to="/getting-started">Getting Started</router-link>
-      <router-link to="/development">Running Your App</router-link>
-      <router-link to="/production">Deploying for Production</router-link>
+      <router-link to="/development">Development</router-link>
+      <router-link to="/production">Production</router-link>
       <router-link to="/unit-testing">Unit Testing</router-link>
       <router-link to="/e2e-testing">E2E Testing</router-link>
-      <router-link to="/env">Environment Config</router-link>
-      <router-link to="/library">Creating a Library</router-link>
+      <router-link to="/env">Config</router-link>
+      <router-link to="/library">Libraries</router-link>
       <router-link to="/webpack">Webpack</router-link>
       <router-link to="/structure">Structure</router-link>
     </div>

@@ -42,13 +42,19 @@
     position: fixed;
     top: 0;
     right: 0;
+    bottom: 0;
     left: 0;
     background-color: $white;
+    z-index: 1000;
 
     #canvasIntro {
       height: 100%;
       width: 100%;
       background-color: $white;
+
+      canvas {
+        background: $white;
+      }
     }
   }
 </style>

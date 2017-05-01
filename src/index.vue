@@ -5,7 +5,7 @@
 
   export default {
     components: {
-      intro,
+      intro: intro,
       navBar: nav
     },
     data () {
@@ -22,6 +22,17 @@
     computed: {
       isHome () {
         return this.$route.path === '/'
+      },
+      didShowIntro () {
+        if (localStorage.getItem('didShowIntro') === 'true') { return true }
+        return false
+      }
+    },
+    methods: {
+      showIntro () {
+        localStorage.setItem('didShowIntro', false)
+        this.$router.push('/')
+        location.reload()
       }
     }
   }
@@ -29,9 +40,9 @@
 
 <template>
   <div class="app">
-    <intro />
+    <intro v-if="isHome && !didShowIntro" />
     <div class="header" :class="{'large': isHome}">
-      <div class="logo"><img :src="logo" />ue Build</div>
+      <div class="logo" @click="showIntro()"><img :src="logo" />ue Build</div>
       <div class="tagline">Taking the frustrating build process and clutter out of your application</div>
     </div>
     <div class="container">

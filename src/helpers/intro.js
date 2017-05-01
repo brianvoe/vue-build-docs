@@ -30,9 +30,11 @@ export default class VueBuildIntro {
     this.gettingStarted = this.linkText('Getting Started', 'getting-started')
     this.gettingStarted.x = (this.width / 2) - 100
     this.gettingStarted.y = (this.height) - 75
+    this.gettingStarted.alpha = 0
     this.features = this.linkText('Features', 'features')
     this.features.x = (this.width / 2) + 100
     this.features.y = (this.height) - 75
+    this.features.alpha = 0
 
     // Make a container to hold all v's
     this.app.stage.addChild(this.all) // Add to state
@@ -192,6 +194,7 @@ export default class VueBuildIntro {
     arrow.y = (this.height / 2) + 40
 
     box.interactive = true
+    box.cursor = 'pointer'
     box.on('click', () => {
       this.callback(link)
     })
@@ -236,8 +239,14 @@ export default class VueBuildIntro {
       })
     })
     .then(() => {
+      // Animate text in
+      this.linkTextFadeIn()
+
       this.slideAllUp()
       this.slideSloganUp()
+
+      // Tell localstorage that you watched this already
+      localStorage.setItem('didShowIntro', true)
     })
   }
 
@@ -491,6 +500,19 @@ export default class VueBuildIntro {
     })
   }
 
+  linkTextFadeIn (timing = 1) {
+    TweenMax.to(this.gettingStarted, timing, {
+      alpha: 1,
+      ease: Power3.easeInOut
+    })
+
+    TweenMax.to(this.features, timing, {
+      alpha: 1,
+      ease: Power3.easeInOut
+    })
+  }
+
+  // Misc
   getRandomNum (min, max) {
     return Math.random() * (max - min) + min
   }

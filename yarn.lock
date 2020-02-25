@@ -4578,6 +4578,10 @@ path-is-inside@^1.0.1:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/path-is-inside/-/path-is-inside-1.0.2.tgz#365417dede44430d1c11af61027facf074bdfc53"
 
+path-parse@^1.0.6:
+  version "1.0.6"
+  resolved "https://registry.yarnpkg.com/path-parse/-/path-parse-1.0.6.tgz#d62dbb5679405d72c4737ec58600e9ddcf06d24c"
+
 path-to-regexp@0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/path-to-regexp/-/path-to-regexp-0.1.7.tgz#df604178005f522f15eb4490e7247a1bfaa67f8c"
@@ -5400,6 +5404,12 @@ resolve@1.1.x, resolve@^1.1.6:
   version "1.1.7"
   resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.1.7.tgz#203114d82ad2c5ed9e8e0411b3932875e889e97b"
 
+resolve@^1.3.2:
+  version "1.15.1"
+  resolved "https://registry.yarnpkg.com/resolve/-/resolve-1.15.1.tgz#27bdcdeffeaf2d6244b95bb0f9f4b4653451f3e8"
+  dependencies:
+    path-parse "^1.0.6"
+
 resource-loader@^2.0.6:
   version "2.0.7"
   resolved "https://registry.yarnpkg.com/resource-loader/-/resource-loader-2.0.7.tgz#246324c53f78f747cfe575ed3bdc11cff79a2ff7"
@@ -5890,8 +5900,8 @@ stringset@~0.2.1:
   resolved "https://registry.yarnpkg.com/stringset/-/stringset-0.2.1.tgz#ef259c4e349344377fcd1c913dd2e848c9c042b5"
 
 stringstream@~0.0.4:
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/stringstream/-/stringstream-0.0.5.tgz#4e484cd4de5a0bbbee18e46307710a8a81621878"
+  version "0.0.6"
+  resolved "https://registry.yarnpkg.com/stringstream/-/stringstream-0.0.6.tgz#7880225b0d4ad10e30927d167a1d6f2fd3b33a72"
 
 strip-ansi@^3.0.0, strip-ansi@^3.0.1:
   version "3.0.1"
@@ -6294,9 +6304,9 @@ void-elements@^2.0.0:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/void-elements/-/void-elements-2.0.1.tgz#c066afb582bb1cb4128d60ea92392e94d5e9dbec"
 
-vue-build@^0.42.0:
-  version "0.42.0"
-  resolved "https://registry.yarnpkg.com/vue-build/-/vue-build-0.42.0.tgz#6213bcd9327f4cf43e0fd5128479c39c8ca16571"
+vue-build@^0.43.0:
+  version "0.43.2"
+  resolved "https://registry.yarnpkg.com/vue-build/-/vue-build-0.43.2.tgz#c7e9bab5999c91016ea9ed21b252ebeea00b961d"
   dependencies:
     autoprefixer "^6.5.2"
     babel-core "^6.18.2"
@@ -6353,6 +6363,7 @@ vue-build@^0.42.0:
     open "0.0.5"
     optimize-css-assets-webpack-plugin "^1.3.0"
     progress-bar-webpack-plugin "^1.9.0"
+    resolve "^1.3.2"
     resolve-url-loader "^1.6.1"
     rimraf "^2.6.0"
     sass-loader "^5.0.1"
